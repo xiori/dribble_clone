@@ -13,6 +13,48 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
+  <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="#">
+      Dribbble
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        Shots
+      </a>  
+    </div>
+    <div class="navbar-end">
+
+      <div class="navbar-item">
+
+        <div class="buttons">
+
+
+          <% if user_signed_in? %>
+          <p class="control"><%= link_to 'Nouveau Shot', root_path, class: "button is-info is-inverted " %></p>
+          <p class="control"><%= link_to 'Se déconnecter ', destroy_user_session_path, method: :delete, class: 'button is-danger is-inverted' %></p>
+          <p class="control"><%= link_to "Editer #{current_user.name}", edit_user_registration_path, class: 'button is-success is-inverted' %></p>
+          <% else %>
+          <p class="control"><%= link_to 'Se connecter', new_user_session_path, class: 'button is-black'  %></p>
+          <p class="control"><%= link_to "S'inscrire", new_user_registration_path, class: "button is-black"  %></p>     
+          <% end %>
+        
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
     <%= yield %>
   </body>
 </html>
