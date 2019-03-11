@@ -4,7 +4,8 @@ class ShotsController < ApplicationController
 
   # GET /shots
   def index
-    @shots = Shot.all
+    @shots = Shot.all.order("created_at DESC")
+    @shot = Shot.new
   end
 
   # GET /shots/1
@@ -13,7 +14,7 @@ class ShotsController < ApplicationController
 
   # GET /shots/new
   def new
-    @shot = Shot.new
+    @shot = current_user.shots.build
   end
 
   # GET /shots/1/edit
@@ -22,29 +23,42 @@ class ShotsController < ApplicationController
 
   # POST /shots
   def create
-    @shot = Shot.new(shot_params)
+    @shot = current_user.shots.create(shot_params)
 
-    if @shot.save
-      redirect_to @shot, notice: 'Shot was successfully created.'
-    else
-      render :new
+
+    respond_to do |format|
+      if @shot.save
+        format.html { redirect_to root_path, notice: 'shot was successfully created.' }
+        format.json { render :show, status: :created, location: @shot }
+      else
+        format.html { render :new }
+        format.json { render json: @shot.errors, status: :unprocessable_entity }
+      end
     end
   end
 
+    
   # PATCH/PUT /shots/1
   def update
+    respond_to do |format|
     if @shot.update(shot_params)
-      redirect_to @shot, notice: 'Shot was successfully updated.'
+      format.html { redirect_to @shot, notice: 'Shot was successfully updated.' }
+      format.json { render :show, status: :ok, location: @shot }   
     else
-      render :edit
+      format.html { render :edit }
+      format.json { render json: @shot.errors, status: :unprocessable_entity }
     end
   end
-
+end
   # DELETE /shots/1
   def destroy
     @shot.destroy
-    redirect_to shots_url, notice: 'Shot was successfully destroyed.'
+    respond_to do |format|
+    format.html { redirect_to shots_url, notice: 'Shot was successfully destroyed.' }
+    format.json { head :no_content }
   end
+end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

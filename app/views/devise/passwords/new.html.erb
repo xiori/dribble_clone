@@ -11,7 +11,7 @@
               <%= f.input :email,
                           required: true,
                           autofocus: true,
-                          input_html: { class: "input is-rounded", autocomplete: "email" },
+                          input_html: { class: "input ", autocomplete: "email" },
                           wrapper: false,
                           label_html: { class: "label" } %>
               </div>
@@ -19,7 +19,7 @@
 
           <div class="form-actions">
           <br/>
-            <%= f.button :submit, "Envoyer les instructions de récupérations", class: "button is-danger is-rounded " %>
+            <%= f.button :submit, "Envoyer les instructions de récupérations", class: "button" %>
           </div>
         <% end %>  
       </div>
