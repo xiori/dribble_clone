@@ -48,6 +48,16 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # Provides a better error page for Rails and other Rack apps. Includes source code inspection, a live REPL and local/instance variable inspection for all stack frames.
+  gem 'better_errors', '~> 2.5', '>= 2.5.1'
+
+  # Guard is a command line tool to easily handle events on file system modifications.
+  gem 'guard', '~> 2.15'
+
+  # Guard::LiveReload automatically reloads your browser when 'view' files are modified.
+  gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
+
 end
 
 group :test do
@@ -60,3 +70,33 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#A modern CSS framework based on Flexbox
+gem 'bulma-rails', '~> 0.7.4'
+
+#Flexible authentication solution for Rails with Warden
+gem 'devise', '~> 4.6', '>= 4.6.1'
+
+# If you like the straight forward and effective nature of Strong Parameters and suspect that CanCan might be overkill for your project then you'll love Petergate's easy to use and read action and content based authorizations.
+gem 'petergate', '~> 2.0', '>= 2.0.1'
+
+# Upload files in your Ruby applications, map them to a range of ORMs, store them on different backends.
+gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+
+#Forms made easy!
+gem 'simple_form', '~> 4.1'
+
+#Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick
+gem 'mini_magick', '~> 4.9', '>= 4.9.3'
+
+#Log impressions from controller actions or from a model
+gem 'impressionist', '~> 1.6', '>= 1.6.1'
+
+#This gem provides jQuery and the jQuery-ujs driver for your Rails 4+ application.
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+
+# A configurable and documented Rails view helper for adding gravatars into your Rails application.
+gem 'gravatar_image_tag', '~> 1.2'
+
+#Rails gem to allowing records to be votable
+gem 'acts_as_votable', '~> 0.12.0'
