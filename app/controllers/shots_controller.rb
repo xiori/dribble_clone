@@ -1,11 +1,10 @@
 class ShotsController < ApplicationController
   before_action :set_shot, only: [:show, :edit, :update, :destroy]
-  access all: [:index, :show, :new, :edit, :create, :update, :destroy], user: :all
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /shots
   def index
     @shots = Shot.all.order("created_at DESC")
-    @shot = Shot.new
   end
 
   # GET /shots/1
