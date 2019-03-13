@@ -1,6 +1,6 @@
 <% #on fais un foreach sur comment %>
-<% @comments.each do |comment| %>
-    
+<% @comments.each do |comment|  %>
+
 <div class="box">
   <article class="media">
     <figure class="media-left">
@@ -11,9 +11,13 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong><%= comment.user.name %></strong>
+          <strong><%= comment.user.id %></strong>
           <div><%= comment.content %></div>
+          <br>
+          <small><a>Like</a> · <%= comment.created_at.hour %> hrs</small>
+          
         </p>
+        
       </div>
     </div>
     <% if (user_signed_in? && (current_user.id == comment.user_id)) %>
@@ -22,4 +26,6 @@
     <% end %>
   </article>
 </div>
+
 <% end %>
+

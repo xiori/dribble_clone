@@ -3,7 +3,6 @@
     <div class="columns is-centered ">
       <div class="column is-4">
        
-
         <%= simple_form_for(@shot) do |f| %>
           <%= f.error_notification %>
           <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
