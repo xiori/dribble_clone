@@ -41,7 +41,7 @@
 
 
           <% if user_signed_in? %>
-          <p class="control"><%= link_to 'Nouveau Shot', root_path, class: "button is-black " %></p>
+          <p class="control"><%= link_to 'Nouveau Shot', new_shot_path, class: "button is-black " %></p>
           <p class="control"><%= link_to 'Se déconnecter ', destroy_user_session_path, method: :delete, class: 'button is-black' %></p>
           <p class="control"><%= link_to "Editer #{current_user.name}", edit_user_registration_path, class: 'button is-black' %></p>
           <% else %>

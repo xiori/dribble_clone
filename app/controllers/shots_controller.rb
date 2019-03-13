@@ -67,6 +67,6 @@ end
 
     # Only allow a trusted parameter "white list" through.
     def shot_params
-      params.require(:shot).permit(:title, :description, :user_id)
+      params.require(:shot).permit(:title, :description, :user_id, :image)
     end
 end
