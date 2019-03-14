@@ -1,4 +1,5 @@
 class Shot < ApplicationRecord  
+    acts_as_votable
     is_impressionable
     mount_uploader :image, ImageUploader
     belongs_to :user
