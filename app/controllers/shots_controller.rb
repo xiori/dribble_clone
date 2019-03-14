@@ -1,5 +1,5 @@
 class ShotsController < ApplicationController
-  before_action :set_shot, only: [:show, :edit, :update, :destroy]
+  before_action :set_shot, only: [:show, :edit, :update, :destroy, :like, :unlike]
   before_action :authenticate_user!, except: [:index, :show]
   impressionist actions: [:show]
 
@@ -60,6 +60,21 @@ end
   end
 end
 
+def like
+  @shot.liked_by current_user
+  respond_to do |format|
+    format.html { redirect_back fallback_location: root_path }
+    format.js { render layout: false }
+  end
+end
+
+def unlike
+  @shot.unliked_by current_user
+  respond_to do |format|
+    format.html { redirect_back fallback_location: root_path }
+    format.js { render layout: false }
+  end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
