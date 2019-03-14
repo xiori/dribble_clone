@@ -1,6 +1,7 @@
 class ShotsController < ApplicationController
   before_action :set_shot, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  impressionist actions: [:show]
 
   # GET /shots
   def index

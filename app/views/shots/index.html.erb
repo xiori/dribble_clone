@@ -18,7 +18,7 @@
                     </figure>
                 </div>
                 <div class="media-content">                                  
-                    <p class="subtitle is-7">@<%= shot.user_id %> / <%= shot.title %> <br/> <span class="subtitle is-7"><%= link_to 'View', shot %></span>
+                    <p class="subtitle is-7">Nombre de vue: <%= shot.impressionist_count %> <%= shot.title %> <br/> <span class="subtitle is-7"><%= link_to 'View', shot %></span>
                     
                     <% if user_signed_in? && current_user.id === shot.user_id %>
                     <span class="subtitle is-7"><%= link_to 'Edit', edit_shot_path(shot) %></span>
