@@ -1,15 +1,32 @@
 <p id="notice"><%= notice %></p>
+<%= link_to 'Retour', shots_path %>
+</br>
+<div class="columns is-centered">
+  <div class="column is-3 ">
+    <div class="card large">
+          <div class="card-image">
+              <figure class="image is-50x50">
+                <%= image_tag @shot.image.thumb.url || @shot.default_image %>
+              </figure>
+          </div>
+          <div class="card-content">
+              <div class="media">
+                  <div class="media-content">                                  
+                      <p class="subtitle is-6 is-uppercase "><%= @shot.title %></p>
+                      
+          
+                  </div>
+              </div>
+              <div class="content">
+              <p class="subtitle is-7"><%= @shot.description %></p>
+                
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @shot.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @shot.description %>
-</p>
-
-
-<%= link_to 'Edit', edit_shot_path(@shot) %> |
-<%= link_to 'Back', shots_path %>
+<%= render 'comments/form' %>
+<% #compteur de commentaire %>
+<%= pluralize(@shot.comments.count, 'Commentaire')%>
+<%= render @shot.comments %>

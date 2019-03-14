@@ -9,6 +9,7 @@ class ShotsController < ApplicationController
 
   # GET /shots/1
   def show
+   
   end
 
   # GET /shots/new
