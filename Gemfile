@@ -100,3 +100,4 @@ gem 'gravatar_image_tag', '~> 1.2'
 
 #Rails gem to allowing records to be votable
 gem 'acts_as_votable', '~> 0.12.0'
+gem 'binding_of_caller'

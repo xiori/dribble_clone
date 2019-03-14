@@ -27,4 +27,5 @@
   </div>
 
 <%= render 'comments/form' %>
-<%= render 'comments/comment' %>
+<%= pluralize(@shot.comments.count, 'Commentaire')%>
+<%= render @shot.comments %>

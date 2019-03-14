@@ -9,7 +9,7 @@ class ShotsController < ApplicationController
 
   # GET /shots/1
   def show
-    @comments = Comment.all
+   
   end
 
   # GET /shots/new

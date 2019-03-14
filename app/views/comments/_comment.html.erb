@@ -1,20 +1,18 @@
 <% #on fais un foreach sur comment %>
-<% @comments.each do |comment|  %>
-
 <div class="box">
   <article class="media">
     <figure class="media-left">
       <p class="image is-48x48 user-thumb">
-        <%= gravatar_image_tag(comment.user.email.gsub('spam', 'mdeering'), alt: comment.user.name, gravatar: { size: 48 }) %>
+        <%= gravatar_image_tag(comment.user.try(:email), alt: comment.user.try(:email), gravatar: { size: 48 }) %>
       </p>
     </figure>
     <div class="media-content">
       <div class="content">
         <p>
-          <strong><%= comment.user.id %></strong>
+          <strong><%= comment.user.try(:name) %></strong>
           <div><%= comment.content %></div>
           <br>
-          <small><a>Like</a> · <%= comment.created_at.hour %> hrs</small>
+          <small><a>Like</a> · <%= comment.created_at.try(:hour) %> hrs</small>
           
         </p>
         
@@ -27,5 +25,4 @@
   </article>
 </div>
 
-<% end %>
 
