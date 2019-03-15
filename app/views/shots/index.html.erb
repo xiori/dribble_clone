@@ -1,39 +1,37 @@
+<br />
 
-<br/>
-<div class="columns is-mobile is-multiline">
-<% #on fais un foreach sur shot %>
-<% @shots.each do |shot| %>
-<div class="column is-2">
-    <div class="card large">
-        <div class="card-image">
-            <figure class="image is-150x150">
-              <%= image_tag shot.image.thumb.url || shot.default_image %>
-            </figure>
-        </div>
-        <div class="card-content">
-            <div class="media">
-                <div class="media-left">
-                    <figure class="image is-50x50">
-                        <img src="https://via.placeholder.com/50x50" alt="Image">
-                    </figure>
-                </div>
-                <div class="media-content">                                  
-                    <p class="subtitle is-7">Nombre de vue: <%= shot.impressionist_count %> <%= shot.title %> <br/> <span class="subtitle is-7"><%= link_to 'View', shot %></span>
-                    
-                    <% if user_signed_in? && current_user.id === shot.user_id %>
-                    <span class="subtitle is-7"><%= link_to 'Edit', edit_shot_path(shot) %></span>
-                    <span class="subtitle is-7"><%= link_to 'Destroy', shot, method: :delete, data: { confirm: 'Are you sure?' } %></span>
-                    <% end %>  </p>
-                    
-                    
+<div class="section ">
+    <div class="container ">
+        <div class="columns is-mobile is-multiline ">
+            <% #on fais un foreach sur shot %>
+            <% @shots.each do |shot| %>
+            <div class="column  is-2-desktop is-two-fifths-mobile ">
+                <div class="card">
+                    <div class="column is-full padding0">
+                        <figure class="image is-150x150">
+                            <%= image_tag shot.image.thumb.url || shot.default_image %>
+                        </figure>
+                    </div>
+                    <div class="column is-full">
+
+                        <p><span class="icon"><i class="far fa-eye has-text-primary"></i></span><span class="subtitle is-7">
+                                <%= shot.impressionist_count %> |
+                                <%= shot.title %></span>
+                        </p>
+                        <span class="subtitle is-7">
+                            <%= link_to 'View', shot %></span>
+                        <% if user_signed_in? && current_user.id === shot.user_id %>
+                        <span class="subtitle is-7">
+                            <%= link_to 'Edit', edit_shot_path(shot) %></span>
+                        <span class="subtitle is-7">
+                            <%= link_to 'Destroy', shot, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+                        <% end %>
+                        </p>
+                    </div>
+
                 </div>
             </div>
-            <div class="content">
-            <p class="subtitle is-7"><%= shot.description %></p>
-              
-            </div>
+            <% end %>
         </div>
     </div>
-</div>
-<% end %>
 </div>

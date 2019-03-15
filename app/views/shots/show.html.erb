@@ -1,55 +1,65 @@
-<p id="notice"><%= notice %></p>
+<p id="notice">
+  <%= notice %>
+</p>
 <%= link_to 'Retour', shots_path %>
-</br>
+
 <div class="columns is-centered">
+
   <div class="column is-3 ">
-    <div class="card large">
-          <div class="card-image">
-              <figure class="image is-50x50">
-                <%= image_tag @shot.image.thumb.url || @shot.default_image %>
-              </figure>
-          </div>
-          <div class="card-content">
-              <div class="media">
-                  <div class="media-content">   
-                  <p>Nombre de vue: <%= @shot.impressionist_count %></p> 
-
-                  <div class="panel-block likes data">
-                      <% if user_signed_in? %>
-                      <% if current_user.liked? @shot %>
-                        <%= link_to unlike_shot_path(@shot), method: :put, class: "unlike_shot" do %>
-                          <span class="icon"><i class="fa fa-heart has-text-primary"></i></span>
-                          <span class="vote_count"><%= pluralize(@shot.get_likes.size, 'Like') %></span>
-                        <% end %>
-                      <% else %>
-                        <%= link_to like_shot_path(@shot), method: :put, class: "like_shot" do %>
-                          <span class="icon"><i class="fa fa-heart"></i></span>
-                          <span class="vote_count"><%= pluralize(@shot.get_likes.size, 'Like') %></span>
-                        <% end %>
-                      <% end %>
-                    <% else %>
-                        <%= link_to like_shot_path(@shot), method: :put, class: "like_shot" do %>
-                          <span class="icon"><i class="fa fa-heart"></i></span>
-                          <span class="vote_count"><%= pluralize(@shot.get_likes.size, 'Like') %></span>
-                        <% end %>
-                    <% end %>
-                  </div>  
-
-                      <p class="subtitle is-6 is-uppercase "><%= @shot.title %></p>
-                      
-          
-                  </div>
-              </div>
-              <div class="content">
-              <p class="subtitle is-7"><%= @shot.description %></p>
-                
-              </div>
-          </div>
+    <figure class="image is-50x50">
+      <%= image_tag @shot.image.thumb.url || @shot.default_image %>
+    </figure>
+    <div>
+      <p>Nombre de vue:
+        <%= @shot.impressionist_count %>
+      </p>
+      <div class="content">
+        <p class="subtitle is-7">
+          <%= @shot.description %>
+        </p>
+        <p class="subtitle is-6 ">
+          <%= @shot.title %>
+        </p>
       </div>
     </div>
+
+    <div class="panel-block likes data">
+      <% if user_signed_in? %>
+      <% if current_user.liked? @shot %>
+      <%= link_to unlike_shot_path(@shot), method: :put, class: "unlike_shot" do %>
+      <span class="icon"><i class="fa fa-heart has-text-primary"></i></span>
+      <span class="vote_count">
+        <%= pluralize(@shot.get_likes.size, 'Like') %></span>
+      <% end %>
+      <% else %>
+      <%= link_to like_shot_path(@shot), method: :put, class: "like_shot" do %>
+      <span class="icon"><i class="fa fa-heart"></i></span>
+      <span class="vote_count">
+        <%= pluralize(@shot.get_likes.size, 'Like') %></span>
+      <% end %>
+      <% end %>
+      <% else %>
+      <%= link_to like_shot_path(@shot), method: :put, class: "like_shot" do %>
+      <span class="icon"><i class="fa fa-heart"></i></span>
+      <span class="vote_count">
+        <%= pluralize(@shot.get_likes.size, 'Like') %></span>
+      <% end %>
+      <% end %>
+    </div>
+
+
+
   </div>
 
-<%= render 'comments/form' %>
-<% #compteur de commentaire %>
-<%= pluralize(@shot.comments.count, 'Commentaire')%>
-<%= render @shot.comments %>
+
+
+
+
+  <div class="column is-5">
+    <%= render 'comments/form' %>
+    <% #compteur de commentaire %>
+    <%= pluralize(@shot.comments.count, 'Commentaire')%>
+    <%= render @shot.comments %>
+  </div>
+
+</div>
